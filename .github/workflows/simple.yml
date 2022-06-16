@@ -4,9 +4,6 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
   pull_request:
     types:
     - open
@@ -20,7 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   test_close:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.closed == true
+    if: ${{github.event.pull_request.closed == true}}
     steps:
       - name: Echo
         run: echo Closed Triggered!      
